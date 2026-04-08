@@ -21,7 +21,8 @@ jobs:
     - name: Install dependencies
       run: |
         pip install --upgrade pip
-        pip install alpaca-trade-api pandas
+        pip install alpaca-trade-api pandas python-dotenv
+
 
     - name: Run bot
       env:
