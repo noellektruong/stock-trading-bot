@@ -2,12 +2,16 @@ import alpaca_trade_api as tradeapi
 import pandas as pd
 import datetime
 import time
+import os
+from dotenv import load_dotenv
 
 # =========================
 # CONFIG
 # =========================
-API_KEY = "PKFBMKVCHXQGXJT4MCA7GZWPHZ"
-SECRET_KEY = "FC1DV4iCza5r16Vkxz6UHmJapNCfVYMtxVMp1owMM93"
+load_dotenv()
+API_KEY = os.getenv("API_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY")
+
 BASE_URL = "https://paper-api.alpaca.markets"
 
 STARTING_BALANCE = 1_000_000
