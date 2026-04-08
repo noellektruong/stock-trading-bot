@@ -9,8 +9,9 @@ from dotenv import load_dotenv
 # CONFIG
 # =========================
 load_dotenv()
-API_KEY = os.getenv("API_KEY")
-SECRET_KEY = os.getenv("SECRET_KEY")
+API_KEY = os.getenv("APCA_API_KEY_ID")
+SECRET_KEY = os.getenv("APCA_API_SECRET_KEY")
+
 
 BASE_URL = "https://paper-api.alpaca.markets"
 
