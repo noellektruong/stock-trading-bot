@@ -29,8 +29,8 @@ jobs:
         APCA_API_KEY_ID: ${{ secrets.APCA_API_KEY_ID }}
         APCA_API_SECRET_KEY: ${{ secrets.APCA_API_SECRET_KEY }}
       run: |
-        echo "Key: $APCA_API_KEY_ID"
-        echo "Secret: $APCA_API_SECRET_KEY"
+        echo "Key is set: ${#APCA_API_KEY_ID}"
+        echo "Secret is set: ${#APCA_API_SECRET_KEY}"
 
 
     - name: Run bot
