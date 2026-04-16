@@ -2,13 +2,14 @@ name: Trading Bot
 
 on:
   schedule:
-    - cron: "0 15 * * 1-5"   # runs Mon–Fri at 10 AM Texas time (15:00 UTC)
+    - cron: "0 15 * * 1-5"
   workflow_dispatch:
 
 jobs:
   run:
     runs-on: ubuntu-latest
     environment: code
+    timeout-minutes: 5
 
     steps:
     - name: Checkout
@@ -24,7 +25,6 @@ jobs:
         pip install --upgrade pip
         pip install alpaca-trade-api pandas python-dotenv
 
-
     - name: Debug env
       env:
         APCA_API_KEY_ID: ${{ secrets.APCA_API_KEY_ID }}
@@ -33,10 +33,8 @@ jobs:
         echo "Key is set: ${#APCA_API_KEY_ID}"
         echo "Secret is set: ${#APCA_API_SECRET_KEY}"
 
-
     - name: Run bot
       env:
         APCA_API_KEY_ID: ${{ secrets.APCA_API_KEY_ID }}
         APCA_API_SECRET_KEY: ${{ secrets.APCA_API_SECRET_KEY }}
-      run: python main.py
-
+      run: timeout 300 python main.py
