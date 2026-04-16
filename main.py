@@ -1,7 +1,6 @@
 import alpaca_trade_api as tradeapi
 import pandas as pd
 import datetime
-import time
 import os
 from dotenv import load_dotenv
 
@@ -12,20 +11,16 @@ load_dotenv()
 API_KEY = os.getenv("APCA_API_KEY_ID")
 SECRET_KEY = os.getenv("APCA_API_SECRET_KEY")
 
-
 BASE_URL = "https://paper-api.alpaca.markets"
-
-STARTING_BALANCE = 1_000_000
 
 # Stocks (tickers)
 stocks = {
-    "MCD": {"name": "McDonald's", "owned": 50},
-    "HSY": {"name": "Hershey", "owned": 100},
-    "TSN": {"name": "Tyson", "owned": 50},
-   
+    "MCD": {"name": "McDonald's"},
+    "HSY": {"name": "Hershey"},
+    "TSN": {"name": "Tyson"},
 }
 
-TRADE_AMOUNT = 10  # buy/sell 7 shares each time
+TRADE_AMOUNT = 10  # buy/sell 10 shares each time
 
 # =========================
 # CONNECT TO ALPACA
@@ -114,12 +109,11 @@ def run_trading_cycle():
         trade_stock(symbol)
 
 # =========================
-# LOOP (EVERY 3 DAYS)
+# MAIN (RUN ONCE ONLY)
 # =========================
 def main():
-    while True:
-        run_trading_cycle()
-       # print("\nWaiting 3 days...\n")
+    run_trading_cycle()
+
 # =========================
 # START PROGRAM
 # =========================
